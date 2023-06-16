@@ -94,6 +94,7 @@ class PostCategory(ListView):
 
 
 def addpost(request):
+    cats = Category.objects.all()
     if request.method == 'POST':
         form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
@@ -103,7 +104,7 @@ def addpost(request):
     else:
         form = ArticleForm()
 
-    return render(request, 'mysite/addpost.html', {'form': form, 'title': 'Новый пост'})
+    return render(request, 'mysite/addpost.html', {'form': form, 'title': 'Новый пост', 'cats': cats})
 
 
 class RegisterUser(CreateView):

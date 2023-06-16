@@ -21,7 +21,7 @@ class Post(models.Model):
     photo3 = models.ImageField(upload_to="photos", verbose_name='Фото4', blank=True)
     photo4 = models.ImageField(upload_to="photos", verbose_name='Фото5', blank=True)
     center = models.CharField(max_length=255, verbose_name='Координата', blank=True, null=True)
-    # center_y = models.CharField(max_length=255, verbose_name='Координата 2', null=True)
+    scale = models.CharField(max_length=255, verbose_name='Маштаб', blank=True, null=True)
     time_create = models.DateTimeField(auto_now_add=True, null=True)
     is_published = models.BooleanField(default=True)
     cat = models.ForeignKey('Category', on_delete=models.PROTECT, verbose_name='Категория')

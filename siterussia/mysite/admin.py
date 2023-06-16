@@ -4,7 +4,7 @@ from .models import *
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'time_create', 'photo', 'photo1', 'photo2', 'photo3', 'photo4', 'center', 'is_published')
+    list_display = ('id', 'title', 'time_create', 'photo', 'photo1', 'photo2', 'photo3', 'photo4', 'center', 'scale', 'is_published')
     list_display_links = ('id', 'title')
     search_fields = ('title', 'content')
     list_editable = ('is_published',)
