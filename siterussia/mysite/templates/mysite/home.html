@@ -1,0 +1,60 @@
+
+{% extends 'mysite/base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<main>
+  <div class="container-xxl">
+  <div class="my-md-3 ps-md-3 text-center ">
+    <div class="p-lg-3 mx-auto my-3 ">
+      <h1 class="display-4 fw-normal text-center">Открой Россию сейчас!</h1>
+      <a class="btn btn-success" href="{% url 'allpost' %}">Открыть</a>
+    </div>
+  </div>
+    </div>
+
+<div class="container-xxl mt-3">
+  <div class="row">
+    <div class="col-md-6 position-relative mb-4 text-center" style="border-radius: 21px 21px 21px 21px;">
+      <div>
+        <a href="{% url 'showcat' cat_slug='city' %}"> <img src="{% static 'img/city_home.jpg' %}" class="img-fluid"  style="border-radius: 21px 21px 21px 21px;" alt="Первая картинка"></a>
+        <a class="display-3 text-decoration-none text-white  text-uppercase" href="{% url 'showcat' cat_slug='city' %}" style="left: 0; bottom: 50%; width: 100%; position: absolute"><strong>Города</strong></a>
+      </div>
+    </div>
+    <div class="col-md-6 position-relative mb-4 text-center" style="border-radius: 21px 21px 21px 21px;">
+      <div>
+        <a href="{% url 'showcat' cat_slug='nature' %}"> <img src="{% static 'img/nature_home3.jpg' %}" class="img-fluid"  style="border-radius: 21px 21px 21px 21px;" alt="Первая картинка"></a>
+        <a class="display-3 text-decoration-none text-white  text-uppercase" href="{% url 'showcat' cat_slug='nature' %}" style="left: 0; bottom: 50%; width: 100%; position: absolute"><strong>Природа</strong></a>
+      </div>
+    </div>
+    <div class="col-md-6 mb-4 position-relative mb-1 text-center overflow-hidden" style="border-radius: 21px 21px 21px 21px;">
+      <div>
+        <a href="{% url 'showcat' cat_slug='culture' %}"> <img src="{% static 'img/culture_home.jpg' %}" class="img-fluid"  style="border-radius: 21px 21px 21px 21px;" alt="Первая картинка"></a>
+        <a class="display-3 text-decoration-none text-white  text-uppercase" href="{% url 'showcat' cat_slug='culture' %}" style="left: 0; bottom: 50%; width: 100%; position: absolute"><strong>Культура</strong></a>
+      </div>
+    </div>
+    <div class="col-md-6 mb-4 position-relative mb-1 text-center overflow-hidden" style="border-radius: 21px 21px 21px 21px;">
+      <div>
+        <a href="{% url 'showcat' cat_slug='history' %}"> <img src="{% static 'img/history_home1.jpeg' %}" class="img-fluid"  style="border-radius: 21px 21px 21px 21px;" alt="Первая картинка"></a>
+        <a class="display-3 text-decoration-none text-white  text-uppercase" href="{% url 'showcat' cat_slug='history' %}" style="left: 0; bottom: 50%; width: 100%; position: absolute"><strong>История</strong></a>
+      </div>
+    </div>
+    <div class="col-md-6 mb-4 position-relative mb-2  text-center overflow-hidden" style="border-radius: 21px 21px 21px 21px;">
+      <div>
+        <a href="{% url 'showcat' cat_slug='people' %}"> <img src="{% static 'img/gagarin_home_new.jpg' %}" class="img-fluid"  style="border-radius: 21px 21px 21px 21px;" alt="Первая картинка"></a>
+        <a class="display-3 text-decoration-none text-white  text-uppercase" href="{% url 'showcat' cat_slug='people' %}" style="left: 0; bottom: 50%; width: 100%; position: absolute"><strong>Люди</strong></a>
+      </div>
+    </div>
+    <div class="col-md-6 mb-4 position-relative mb-2 text-center overflow-hidden" style="border-radius: 21px 21px 21px 21px;">
+      <div>
+        <a href="{% url 'showcat' cat_slug='other' %}"> <img src="{% static 'img/other.jpg' %}" class="img-fluid"  style="border-radius: 21px 21px 21px 21px;" alt="Первая картинка"></a>
+        <a class="display-3 text-decoration-none text-white  text-uppercase" href="{% url 'showcat' cat_slug='other' %}" style="left: 0; bottom: 50%; width: 100%; position: absolute"><strong>Разное</strong></a>
+      </div>
+    </div>
+  </div>
+  </div>
+</main>
+{% endblock %}
+
+

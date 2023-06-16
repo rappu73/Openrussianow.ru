@@ -1,0 +1,167 @@
+{% extends 'mysite/base.html' %}
+
+{% block content %}
+{% load static %}
+
+<main class="container-xxl ">
+    <div class="rounded text-bg-dark d-flex justify-content-center">
+        <div class="col-12 center-block text-center">
+            <h1 class="display-4 blog-post-title">{{post.title}}</h1>
+            <div class="row justify-content-center">
+                <link rel="stylesheet" href="{% static 'css/flexslider2.css' %}">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                <script type="text/javascript" src="https://bootstraptema.ru/snippets/slider/2016/flexslider/jquery.flexslider.js"></script>
+                <script type="text/javascript" src="https://bootstraptema.ru/snippets/slider/2016/flexslider/modernizr.js"></script>
+                <script type="text/javascript" src="https://bootstraptema.ru/snippets/slider/2016/flexslider/jquery.mousewheel.js"></script>
+                <script>
+                $(window).load(function() {
+                $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: "thumbnails"
+                });
+                });
+                </script>
+                <div class="row text-bg-dark">
+                    <div class="col-12">
+                        <div class="flexslider text-bg-dark">
+                            <ul class="slides">
+                                {% if post.photo %}
+                                <li data-thumb="{{post.photo.url}}">
+                                    <img src="{{post.photo.url}}" />
+                                </li>
+                                {% endif %}
+                                {% if post.photo1 %}
+                                <li data-thumb="{{post.photo1.url}}">
+                                    <img src="{{post.photo1.url}}" />
+                                </li>
+                                {% endif %}
+                                {% if post.photo2 %}
+                                <li data-thumb="{{post.photo2.url}}">
+                                    <img src="{{post.photo2.url}}" />
+                                </li>
+                                {% endif %}
+                                {% if post.photo3 %}
+                                <li data-thumb="{{post.photo3.url}}">
+                                    <img src="{{post.photo3.url}}" />
+                                </li>
+                                {% endif %}
+                                {% if post.photo4 %}
+                                <li data-thumb="{{post.photo4.url}}">
+                                    <img src="{{post.photo4.url}}" />
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div><!-- ./col-md-12 -->
+                </div><!-- ./row -->
+            </div><!-- ./container -->
+        </div>
+    </div>
+
+<hr/>
+
+  <div class="row d-flex justify-content-center">
+    <div class="col col-md-8 col-sm-12">
+      <h3 class="pb-4 mb-4 fst-italic">{{post.title}}</h3>
+
+      <article class="blog-post">
+
+        {{post.content|linebreaks}}
+      </article>
+
+    </div>
+
+    <div class="col col-md-4 col-sm-12 d-flex justify-content-center text-center">
+
+        <div class="col-12 position-sticky" style="top: 2rem;">
+            {% if post.center %}
+            <div id="map" class="map" style="width: auto; height: 350px;">
+                <script src="https://api-maps.yandex.ru/2.1/?apikey=a25c7e38-b918-4b79-b2ab-284944f87327&lang=ru_RU" type="text/javascript"></script>
+            </div>
+            <script>
+            function init() {
+             let map = new ymaps.Map('map', {
+               center: [{{post.center}}],
+               zoom: 6
+             });
+
+             let placemark = new ymaps.Placemark([{{post.center}}], {}, {
+             });
+
+             map.geoObjects.add(placemark);
+           }
+           ymaps.ready(init);
+            </script>
+
+            <hr/>
+            {% endif %}
+            <div class="col-md-12 col container row mb-2 d-flex justify-content-center">
+                <h3>Другие места:</h3>
+                {% for r in random_post %}
+                <div class="col-12 col-md-12 ms-4">
+                    <div class="row g-0 border rounded overflow-hidden  mb-4 shadow-sm h-md-150 position-relative bg-secondary bg-opacity-25 ">
+                        <div class="col p-3 d-flex flex-column position-static">
+                            <h5 class="mb-1 d-flex justify-content-center text-center">{{ r.title }}</h5>
+                            <p class="card-text mb-auto"></p>
+
+                        </div>
+                        <div class="col-auto d-auto d-lg-block">
+                            {% if r.photo %}
+                            <a class="position-relative" href="{% url 'showpost' r.slug %}" style="width: 100%" type="submit"><img class="bd-placeholder-img w-100 img-fluid"  src="{{r.photo.url}}">
+                                <button class="btn btn-success position-absolute" style="left: 25%; bottom: 40%; width: 50%; position: absolute" type="submit">Смотреть..</button>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+    <hr/>
+<div class="container">
+  {% with comments.count as total_comments %}
+    <h3>
+        {{ total_comments }} comment{{ total_comments|pluralize }}
+    </h3>
+ {% endwith %}
+  {% for comment in comments %}
+    <div class="bg-secondary bg-opacity-25 text-white border rounded-3 mb-2 px-2 py-2">
+        <p class="info pl-2">
+            {{ user.username }}:
+            {{ comment.created }}
+        </p>
+        {{ comment.body|linebreaks }}
+      {% if comment.photo %}
+          <p><img class="img-article-left w-100" src="{{comment.photo.url}}"></p>
+          {% endif %}
+
+    </div>
+{% empty %}
+    <p>Будь первым</p>
+{% endfor %}
+
+{% if request.user.is_authenticated %}
+  {% if new_comment %}
+    <h2>Your comment has been added.</h2>
+  {% else %}
+    <h3>Напиши комментарий</h3>
+    <form action="." method="post", enctype="multipart/form-data">
+        {{ comment_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" class="btn btn-outline-success" value="Отправить"></p>
+    </form>
+{% endif %}
+  {% else %}
+            <a class="col-8 py-2 d-none d-md-inline-block" href="{% url 'register' %}">Регистрация</a>
+            <a class="col-4 py-2 d-none d-md-inline-block" href="{% url 'login' %}">Войти</a>
+  {% endif %}
+  </div>
+</main>
+<!--<script src="/static/js/script.js"></script>-->
+{% endblock %}
+
+
