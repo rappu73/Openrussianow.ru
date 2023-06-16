@@ -103,7 +103,7 @@ def addpost(request):
     else:
         form = ArticleForm()
 
-    return render(request, 'mysite/addpost.html', {'form': form})
+    return render(request, 'mysite/addpost.html', {'form': form, 'title': 'Новый пост'})
 
 
 class RegisterUser(CreateView):
@@ -111,7 +111,7 @@ class RegisterUser(CreateView):
     template_name = 'mysite/register.html'
     success_url = reverse_lazy('login')
     cats = Category.objects.all()
-    extra_context = {'cats': cats}
+    extra_context = {'cats': cats, 'title': 'Регистрация'}
 
     def form_valid(self, form):
         user = form.save()
@@ -123,7 +123,7 @@ class LoginUser(LoginView):
     form_class = LoginUserForm
     template_name = 'mysite/login.html'
     cats = Category.objects.all()
-    extra_context = {'cats': cats}
+    extra_context = {'cats': cats, 'title': 'Авторизация'}
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -143,7 +143,7 @@ class ContactFormView(FormView):
     template_name = 'mysite/contact.html'
     success_url = reverse_lazy('home')
     cats = Category.objects.all()
-    extra_context = {'cats': cats}
+    extra_context = {'cats': cats, 'title': 'Контакты'}
 
     def form_valid(self, form):
         print(form.cleaned_data)

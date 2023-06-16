@@ -3,30 +3,20 @@
 
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-
-  <head><script src="https://getbootstrap.com/docs/5.3/assets/js/color-modes.js"></script>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.111.3">
-    <title>{{ title }}</title>
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/product/">
-
-<link href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="{% static 'css/style_new.css' %}">
-<link href="https://getbootstrap.com/docs/5.3/examples/product/product.css" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-  </head>
-
+<head>
+  <meta charset="utf-8">
+  <title>{{ title }}</title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/product/">
+  <link href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style_new.css' %}">
+  <link href="https://getbootstrap.com/docs/5.3/examples/product/product.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
 
 <body class="text-bg-dark" style="font-family: 'Open Sans', sans-serif;">
 <header class="container-fluid d-flex flex-column  site-header navbar-dark bg-secondary bg-opacity-25 mb-3">
-
-
   <nav class="navbar navbar-expand-md navbar-dark">
     <div class="container-xxl">
       <a class="navbar-brand text-center text-success" href="{% url 'home' %}"><b><h2><strong>OPEN  <br> RUSSIA <br> NOW </strong></h2></b></a>
@@ -35,7 +25,6 @@
       </button>
       <div class="row">
         <div class="container-fluid col-12 row collapse navbar-collapse justify-content-center" id="navbarCollapse">
-
           <div class="row  d-flex justify-content-between text-center navbar-expand">
             <ul class="col col-md-2 col-sm-2 navbar-nav d-flex">
               <li class="nav-item">
@@ -152,14 +141,10 @@
       </div>
     </div>
   </nav>
-
-
-
 </header>
+{% block content %}
 
-    {% block content %}
-
-    {% endblock %}
+{% endblock %}
 
 {% if page_obj.has_other_pages %}
 <nav aria-label="..." class="mt-4">
@@ -188,43 +173,36 @@
 <footer class="container-fluid navbar-dark bg-black mt-4">
 <div class="container-xxl pt-5 pb-2">
   <div class="row text-center text-success">
-
     <div class="col-12 col-md-4">
       <h5>Open Russia Now</h5>
       <ul class="list-unstyled text-small">
         <li><a class="link-secondary" href="{% url 'home' %}">Главная</a></li>
         <li><a class="link-secondary" href="{% url 'contact' %}">Контакты</a></li>
-
       </ul>
     </div>
     <div class="col-12 col-md-4">
       <h5>Категории</h5>
       <ul class="list-unstyled text-small">
         <ol class="list-unstyled mb-0">
-                    {% for c in cats %}
-                    <li><a class="link-secondary" href="{% url 'showcat' c.slug %}">{{c.name}}</a></li>
-                    {% endfor %}
-                </ol>
-
+          {% for c in cats %}
+          <li><a class="link-secondary" href="{% url 'showcat' c.slug %}">{{c.name}}</a></li>
+          {% endfor %}
+        </ol>
       </ul>
     </div>
     <div class="col-12 col-md-4">
       <h5>Присоединяйся к нам</h5>
       <ul class="list-unstyled text-small">
         <ol class="list-unstyled">
-                    <li><a class="link-secondary" href="#">Telegram</a></li>
-                    <li><a class="link-secondary" href="#">Dzen</a></li>
-                </ol>
+          <li><a class="link-secondary" href="#">Telegram</a></li>
+          <li><a class="link-secondary" href="#">Dzen</a></li>
+        </ol>
       </ul>
     </div>
-
   </div>
 </div>
+  <script src="https://getbootstrap.com/docs/5.3/assets/js/color-modes.js"></script>
+  <script src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js"></script>
 
-
-    <script src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js"></script>
-<!--  <script src="/static/js/script.js"></script>-->
-
-
-  </body>
+</body>
 </html>

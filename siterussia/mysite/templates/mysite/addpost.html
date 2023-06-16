@@ -2,29 +2,18 @@
 
 {% block content %}
 <body>
-    <div class="container">
-        <h1>Создание статьи</h1>
- 
-        <form action="{% url 'addpost' %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-
+<div class="container">
+    <h1>Создание статьи</h1>
+    <form action="{% url 'addpost' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
         {% for f in form %}
-
-            <div class="form-group">
-                <label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}
-            </div>
-            <br>
+        <div class="form-group">
+            <label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}
+        </div>
+        <br>
         {% endfor %}
-
- 
-            <button type="submit" class="btn btn-primary">Сохранить</button>
-        </form>
-    </div>
- 
-    <!-- Подключение Bootstrap JS и jQuery -->
-<!--    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>-->
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>-->
-<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
-  {% endblock %}
+        <button type="submit" class="btn btn-success">Сохранить</button>
+    </form>
+</div>
+{% endblock %}
 </body>
-</html>
