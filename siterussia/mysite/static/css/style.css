@@ -1,17 +1,5 @@
 
 .icons_russia_city{
-    background-image: url('../img/icons/city_icon_black.png');
-    background-size: contain;
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-    text-align: center;
-    padding-left: 0;
-    padding-right: 0;
-    font-size: 16px;
-}
-
-.icons_russia_city:hover{
     background-image: url('../img/icons/city_icon_new.png');
     background-size: contain;
     width: 40px;
@@ -23,8 +11,8 @@
     font-size: 16px;
 }
 
-.icons_russia_nature{
-    background-image: url('../img/icons/forest_icon_black.png');
+.icons_russia_city:hover{
+    background-image: url('../img/icons/city_icon_black.png');
     background-size: contain;
     width: 40px;
     height: 40px;
@@ -35,7 +23,8 @@
     font-size: 16px;
 }
 
-.icons_russia_nature:hover{
+
+.icons_russia_nature{
     background-image: url('../img/icons/forest_icon.png');
     background-size: contain;
     width: 40px;
@@ -47,8 +36,8 @@
     font-size: 16px;
 }
 
-.icons_russia_culture{
-    background-image: url('../img/icons/cultur_icon_black.png');
+.icons_russia_nature:hover{
+    background-image: url('../img/icons/forest_icon_black.png');
     background-size: contain;
     width: 40px;
     height: 40px;
@@ -59,7 +48,8 @@
     font-size: 16px;
 }
 
-.icons_russia_culture:hover{
+
+.icons_russia_culture{
     background-image: url('../img/icons/cultur_icon.png');
     background-size: contain;
     width: 40px;
@@ -71,8 +61,8 @@
     font-size: 16px;
 }
 
-.icons_russia_history{
-    background-image: url('../img/icons/history_icon_black.png');
+.icons_russia_culture:hover{
+    background-image: url('../img/icons/cultur_icon_black.png');
     background-size: contain;
     width: 40px;
     height: 40px;
@@ -83,7 +73,8 @@
     font-size: 16px;
 }
 
-.icons_russia_history:hover{
+
+.icons_russia_history{
     background-image: url('../img/icons/history_icon.png');
     background-size: contain;
     width: 40px;
@@ -95,8 +86,8 @@
     font-size: 16px;
 }
 
-.icons_russia_people{
-    background-image: url('../img/icons/family_icon_black.png');
+.icons_russia_history:hover{
+    background-image: url('../img/icons/history_icon_black.png');
     background-size: contain;
     width: 40px;
     height: 40px;
@@ -107,7 +98,8 @@
     font-size: 16px;
 }
 
-.icons_russia_people:hover{
+
+.icons_russia_people{
     background-image: url('../img/icons/family_icon_new.png');
     background-size: contain;
     width: 40px;
@@ -119,8 +111,21 @@
     font-size: 16px;
 }
 
+.icons_russia_people:hover{
+    background-image: url('../img/icons/family_icon_black.png');
+    background-size: contain;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 16px;
+}
+
+
 .icons_russia_other{
-    background-image: url('../img/icons/other_icon_black.png');
+    background-image: url('../img/icons/other_icon.png');
     background-size: contain;
     width: 40px;
     height: 40px;
@@ -132,7 +137,7 @@
 }
 
 .icons_russia_other:hover{
-    background-image: url('../img/icons/other_icon.png');
+    background-image: url('../img/icons/other_icon_black.png');
     background-size: contain;
     width: 40px;
     height: 40px;
@@ -142,6 +147,8 @@
     padding-right: 0;
     font-size: 16px;
 }
+
+
 
 .bd-placeholder-img {
         font-size: 1.125rem;

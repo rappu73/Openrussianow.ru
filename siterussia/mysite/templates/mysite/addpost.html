@@ -1,7 +1,7 @@
 {% extends 'mysite/base.html' %}
 
 {% block content %}
-<body>
+{% if request.user.is_superuser %}
 <div class="container">
     <h1>Создание статьи</h1>
     <form action="{% url 'addpost' %}" method="post" enctype="multipart/form-data">
@@ -15,5 +15,6 @@
         <button type="submit" class="btn btn-success">Сохранить</button>
     </form>
 </div>
+{% endif %}
 {% endblock %}
-</body>
+
