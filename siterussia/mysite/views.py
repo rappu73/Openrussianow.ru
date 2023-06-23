@@ -41,7 +41,7 @@ class PostAll(ListView):
         return context
 
     def get_queryset(self):
-        return Post.objects.all()
+        return Post.objects.order_by('title')
 
 
 def show_post(request, post_slug):
@@ -90,7 +90,7 @@ class PostCategory(ListView):
         return context
 
     def get_queryset(self):
-        return Post.objects.filter(cat__slug=self.kwargs['cat_slug'], is_published=True)
+        return Post.objects.filter(cat__slug=self.kwargs['cat_slug'], is_published=True).order_by('title')
 
 
 def addpost(request):
