@@ -2,6 +2,7 @@
 
 {% block content %}
 {% load static %}
+{% load embed_video_tags %}
 
 <main class="container-xxl ">
     <div class="rounded text-bg-dark d-flex justify-content-center">
@@ -59,18 +60,21 @@
     </div>
     <hr/>
     <div class="row d-flex justify-content-center">
-        <div class="col col-md-8 col-sm-12">
+        <div class="col-12 col-md-12 col-sm-12 col-lg-8">
             <h3 class="pb-4 mb-4 fst-italic">{{post.title}}</h3>
             <article class="blog-post">
                 {{post.content|linebreaks}}
             </article>
         </div>
-        <div class="col-12 col-md-4 col-sm-12 d-flex justify-content-center text-center">
-            <div class="col-12 position-sticky" style="top: 2rem;">
+        <div class="col-12 col-md-12 col-sm-12 col-lg-4 d-flex justify-content-center text-center">
+            <div class="col-12" style="top: 2rem;">
                 {% if post.center %}
+                <p>🏔️ Рекомендуем посмотреть панорамы на карте </p>
                 <div id="map" class="map" style="width: auto; height: 350px;">
                     <script src="https://api-maps.yandex.ru/2.1/?apikey=a25c7e38-b918-4b79-b2ab-284944f87327&lang=ru_RU" type="text/javascript"></script>
+
                 </div>
+
                 <script>
                 function init() {
                  let map = new ymaps.Map('map', {
@@ -87,19 +91,27 @@
                 </script>
                 <hr/>
                 {% endif %}
-                <div class="col-md-12 col container row mb-2 d-flex justify-content-center">
-                    <h3>Другие места:</h3>
+                {% if post.video %}
+ <div class="col-12">
+     <h5>Видео по теме:</h5>
+     <iframe width="auto" height="auto" src="{{ post.video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                <hr/>
+                {% endif %}
+                <div class="col-12 row d-flex justify-content-center">
+
+                    <h5>Другие места:</h5>
                     {% for r in random_post %}
-                    <div class="col-12 col-md-12 ms-4">
+                    <div class="col-10 col-sm-5 col-md-5 col-lg-10 ms-4">
                         <div class="row g-0 border rounded overflow-hidden  mb-4 shadow-sm h-md-150 position-relative bg-secondary bg-opacity-25 ">
-                            <div class="col p-3 d-flex flex-column position-static">
-                                <h5 class="mb-1 d-flex justify-content-center text-center">{{ r.title }}</h5>
-                                <p class="card-text mb-auto"></p>
-                            </div>
+<!--                            <div class="col p-3 d-flex flex-column position-static">-->
+<!--                                <h5 class="mb-1 d-flex justify-content-center text-center">{{ r.title }}</h5>-->
+<!--                                <p class="card-text mb-auto"></p>-->
+<!--                            </div>-->
                             <div class="col-auto d-auto d-lg-block">
                                 {% if r.photo %}
                                 <a class="position-relative" href="{% url 'showpost' r.slug %}" style="width: 100%" type="submit"><img class="bd-placeholder-img w-100 img-fluid"  src="{{r.photo.url}}">
-                                    <button class="btn btn-success position-absolute" style="left: 25%; bottom: 40%; width: 50%; position: absolute" type="submit">Смотреть..</button>
+                                    <button class="btn btn-success position-absolute" style="left: 25%; bottom: 40%; width: 50%; position: absolute" type="submit">{{ r.title }}</button>
                                 </a>
                                 {% endif %}
                             </div>
@@ -113,11 +125,11 @@
     <hr/>
     <div class="container">
         <div class="text-center"> <h2>Комментарии:</h2></div>
-        {% with comments.count as total_comments %}
-        <h3>
-            {{ total_comments }} comment{{ total_comments|pluralize }}
-        </h3>
-        {% endwith %}
+<!--        {% with comments.count as total_comments %}-->
+<!--        <h3>-->
+<!--            {{ total_comments }} comment{{ total_comments|pluralize }}-->
+<!--        </h3>-->
+<!--        {% endwith %}-->
         {% for comment in comments %}
         <div class="bg-secondary bg-opacity-25 text-white border rounded-3 mb-2 px-2 py-2">
             <p class="info pl-2">
@@ -130,7 +142,7 @@
             {% endif %}
         </div>
         {% empty %}
-        <p>Напиши первым</p>
+        <p>Будь первым</p>
         {% endfor %}
         <hr>
         {% if request.user.is_authenticated %}

@@ -38,9 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'debug_toolbar',
+    'embed_video',
     'captcha',
     'mysite'
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

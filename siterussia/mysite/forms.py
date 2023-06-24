@@ -11,7 +11,7 @@ from .models import *
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'slug', 'content', 'photo', 'photo1', 'photo2', 'photo3', 'photo4', 'center', 'scale', 'cat']
+        fields = ['title', 'slug', 'content', 'photo', 'photo1', 'photo2', 'photo3', 'photo4', 'center', 'scale', 'video', 'cat']
         widgets = {
             'title': forms.TextInput(attrs={'class': "form-control"}),
             'slug': forms.TextInput(attrs={'class': "form-control"}),
@@ -23,6 +23,7 @@ class ArticleForm(forms.ModelForm):
             'photo4': forms.FileInput(attrs={'class': "form-control-file"}),
             'center': forms.TextInput(attrs={'class': "form-control"}),
             'scale': forms.TextInput(attrs={'class': "form-control"}),
+            'video': forms.Textarea(attrs={'class': "form-control"}),
             'cat': forms.Select(attrs={'class': "form-control"})
         }
 
