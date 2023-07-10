@@ -1,3 +1,5 @@
+import time
+
 import telebot
 from telebot.types import WebAppInfo
 
@@ -90,4 +92,10 @@ def callback(call):
 
 
 
-bot.polling(none_stop=True)
+# bot.polling(none_stop=True)
+while True:
+    try:
+        bot.polling(none_stop=True)
+
+    except Exception as e:
+        time.sleep(15)
