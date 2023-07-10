@@ -1,10 +1,12 @@
 import telebot
 from telebot.types import WebAppInfo
+
+from mysite.management.commands.key_bot import key
 from mysite.models import Post
 from telebot import TeleBot, types
 
 #
-bot = telebot.TeleBot("6385747594:AAGtS9bS-1CWaV-OH9-Z_1-Jcyq8jiCGEuw", parse_mode=None)
+bot = telebot.TeleBot(key, parse_mode=None)
 
 
 @bot.message_handler(commands=['start'])
